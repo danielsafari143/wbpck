@@ -1,6 +1,6 @@
 import './style.css';
 import './style.scss';
-import './modules/Insert';
-import './modules/clicked';
-import './modules/edit';
-import './modules/reload'
+import './modules/insert.js';
+import './modules/clicked.js';
+import './modules/edit.js';
+import './modules/reload.js';

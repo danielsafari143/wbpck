@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/danielsafari143/wbpck#readme",
   "devDependencies": {
-    "css-loader": "^6.7.2",
+    "css-loader": "^6.7.3",
     "html-webpack-plugin": "^5.5.0",
     "sass": "^1.56.2",
     "sass-loader": "^13.2.0",
