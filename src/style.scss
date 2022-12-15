@@ -90,6 +90,7 @@ body{
             .paragraph{
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
                 color:$clrTxt;
                 width: 100%;
                 font-size: 15px;
@@ -100,7 +101,13 @@ body{
                 overflow: hidden;
                 white-space: nowrap;
                 font-family: 'Open Sans', 'Lucida Grande', tahoma, verdana, arial, sans-serif;
-
+               
+                .paragraph2{
+                    outline: none;
+                    margin: 0;
+                    padding: 0;
+                    width: 100%;
+                }
                 .img{
                     color: $clrTxt;
                 }

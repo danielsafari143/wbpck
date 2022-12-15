@@ -18,7 +18,6 @@ class Insert{
                 localStorage.setItem('dataList' , JSON.stringify(this.storeData));
                 const localData = JSON.parse(localStorage.getItem('dataList'));
                 this.refesh()
-                console.log("salut")
             }
             else{
                 this.storeData = JSON.parse(localStorage.getItem('dataList'));
@@ -41,25 +40,31 @@ class Insert{
             svg.classList.add('bi-three-dots-vertical');
             svg.classList.add('img');
             svg.id = [i];
+            inpt.id = 'inp'+[i];
             svg.setAttribute('fill', 'currentColor');
             svg.setAttribute('viewBox', '0 0 16 16');
             svg.setAttribute('width', '16');
             svg.setAttribute('height','16');
             path.setAttribute('d','M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z')
             svg.appendChild(path);
-            inpt.type = 'checkbox';
             inpt.className = 'inpt'
-            let paragraph = document.createElement('p');
-            let texte = document.createTextNode(localData[i]);
-            paragraph.className = 'paragraph';
-            paragraph.appendChild(texte); 
-            paragraph.appendChild(svg);
-            paragraph.id = 'paragraph'+[i];
-            li.appendChild(inpt);
-            li.appendChild(paragraph);
-            li.className = 'list-item'
-            li.id = 'list-item'+[i];
-            this.containerId.appendChild(li)
+            inpt.type = 'checkbox';
+            let paragraph = document.createElement('div');
+             let paragraph2 = document.createElement('p');
+             let texte = document.createTextNode(localData[i]);
+             paragraph.className = 'paragraph';
+             paragraph2.id = 'paragraph2'+[i];
+             paragraph2.appendChild(texte);
+             paragraph2.className = 'paragraph2'; 
+             paragraph2.setAttribute('contentEditable','true');
+             paragraph.appendChild(paragraph2); 
+             paragraph.appendChild(svg);
+             paragraph.id = 'paragraph'+[i];
+             li.appendChild(inpt);
+             li.appendChild(paragraph);
+             li.id = 'list-item'+[i];
+             li.className = 'list-item';
+             this.containerId.appendChild(li);
             
             }
             this.InptValue.value ='';
@@ -84,18 +89,24 @@ class Insert{
                 svg.setAttribute('height','16');
                 path.setAttribute('d','M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z')
                 svg.appendChild(path);
+                inpt.id = 'inp'+[i];
                 inpt.type = 'checkbox';
                 inpt.className = 'inpt'
-                let paragraph = document.createElement('p');
+                let paragraph = document.createElement('div');
+                let paragraph2 = document.createElement('p');
                 let texte = document.createTextNode(localData[i]);
                 paragraph.className = 'paragraph';
-                paragraph.appendChild(texte); 
+                paragraph2.appendChild(texte);
+                paragraph2.className = 'paragraph2'; 
+                paragraph2.id = 'paragraph2'+[i];
+                paragraph2.setAttribute('contentEditable','true');
+                paragraph.appendChild(paragraph2); 
                 paragraph.appendChild(svg);
                 paragraph.id = 'paragraph'+[i];
                 li.appendChild(inpt);
                 li.appendChild(paragraph);
-                li.className = 'list-item';
                 li.id = 'list-item'+[i];
+                li.className = 'list-item';
                 this.containerId.appendChild(li)
             
                 }
@@ -118,12 +129,18 @@ class Insert{
              svg.setAttribute('height','16');
              path.setAttribute('d','M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z')
              svg.appendChild(path);
+             inpt.id = 'inp'+[i];
              inpt.type = 'checkbox';
              inpt.className = 'inpt'
-             let paragraph = document.createElement('p');
+             let paragraph = document.createElement('div');
+             let paragraph2 = document.createElement('p');
              let texte = document.createTextNode(localData[i]);
              paragraph.className = 'paragraph';
-             paragraph.appendChild(texte); 
+             paragraph2.appendChild(texte);
+             paragraph2.className = 'paragraph2'; 
+             paragraph2.id = 'paragraph2'+[i];
+             paragraph2.setAttribute('contentEditable','true');
+             paragraph.appendChild(paragraph2); 
              paragraph.appendChild(svg);
              paragraph.id = 'paragraph'+[i];
              li.appendChild(inpt);
@@ -145,7 +162,7 @@ class Insert{
     }
    
     remove = (event) => {
-        if(event.target.classList[0] === 'bi'){
+        if(event.target.classList[0] === 'tester'){
             this.storeData = JSON.parse(localStorage.getItem('dataList'));
             let cont = document.getElementById('paragraph'+event.target.id);
             document.getElementById(('list-item'+event.target.id)).remove();
@@ -159,11 +176,13 @@ class Insert{
       }
 
     itemColor = (event) => {
-        if(event.target.className === 'paragraph'){
-            let newId = document.getElementById(event.target.id).childNodes[1].id;
+        if(event.target.className === 'paragraph2'){
+         
+            let newId = document.getElementById(document.getElementById(event.target.id).parentElement.id).childNodes[1].id;
             let svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
             let path =  document.createElementNS('http://www.w3.org/2000/svg','path');
             let path2 =  document.createElementNS('http://www.w3.org/2000/svg','path');
+            svg.classList.add('tester');
             svg.classList.add('bi');
             svg.classList.add('bi-trash');
             svg.classList.add('img'); 
@@ -177,8 +196,8 @@ class Insert{
             path2.setAttribute('fill-rule','evenodd');
             svg.appendChild(path);
             svg.appendChild(path2);
-            document.getElementById(event.target.id).replaceChild(svg,document.getElementById(event.target.id).childNodes[1])
-            //document.getElementById(document.getElementById(event.target.id).parentElement.id).style.backgroundColor = 'blue';
+            document.getElementById(document.getElementById(event.target.id).parentElement.id).replaceChild(svg,document.getElementById(document.getElementById(event.target.id).parentElement.id).childNodes[1])
+            document.getElementById(newId).style.cursor = 'pointer';
         }
     }
    reset = (event) => {
@@ -196,24 +215,22 @@ class Insert{
         svg.setAttribute('height','16');
         path.setAttribute('d','M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z')
         svg.appendChild(path);
-      alert(eventId)
-        document.getElementById(event).parentElement.replaceChild(svg,document.getElementById(event))
+        document.getElementById(event).parentElement.replaceChild(svg,document.getElementById(event));
+        document.getElementById('insertBtn').addEventListener('click',() =>{
+           this.insert(newId)
+        });
     }
 }
 const insertNew = new Insert() 
 insertNew.display()
 window.addEventListener('click', insertNew.remove);
 window.addEventListener('click', insertNew.itemColor);
-//window.addEventListener('click', insertNew.reset);
-document.getElementById('insertBtn').addEventListener('click',() =>{
-    insertNew.insert()
-});
 document.addEventListener('keyup',(event) =>{
-   if(event.code === 'Enter'){
-    insertNew.insert();
-   }
-});
-document.getElementById('clearIem').addEventListener('click',() =>{
+    if(event.code === 'Enter'){
+     insertNew.insert();
+    }
+ });
+ document.getElementById('clearIem').addEventListener('click',() =>{
     insertNew.clear();
-} );
+});
 
