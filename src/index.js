@@ -1,2 +1,2 @@
 import './style.scss';
-import './modules/insert.js';
+import './modules/Insert.js';
