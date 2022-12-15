@@ -21,7 +21,7 @@ body{
     .sub-container{
         padding-left: 0;
         background-color:$bcg2;
-        height: 400px;
+        height: auto;
 
         .inp-arrow{
             list-style: none;
@@ -32,12 +32,13 @@ body{
             justify-content: space-between;
             padding: 0.5rem;
             box-sizing: border-box;
+           
             .textin{
                 width: 90%;
                 height: 30px;
                 border: none;
                 outline: none;
-                color: $borders;
+                color: $clrTxt;
                 font-style: italic;
                 font-size: 16px;
                 font-family: 'Open Sans', 'Lucida Grande', tahoma, verdana, arial, sans-serif;
@@ -101,7 +102,7 @@ body{
                 font-family: 'Open Sans', 'Lucida Grande', tahoma, verdana, arial, sans-serif;
 
                 .img{
-                    color: $borders;
+                    color: $clrTxt;
                 }
                 .img:hover{
                     cursor: all-scroll;
@@ -111,6 +112,9 @@ body{
             input:hover{
                 cursor: pointer;
             }
+        }
+        .list-item:hover{
+            background-color: #f09440;
         }
     }
     .cleared{
