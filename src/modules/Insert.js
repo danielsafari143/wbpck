@@ -156,8 +156,13 @@ class Insert{
     clear = () =>{
         const localData = JSON.parse(localStorage.getItem('dataList'));
         for(let i = 0 ; i < localData.length ; i++){
+          if( document.getElementById('list-item'+[i]) !== null){
             document.getElementById('list-item'+[i]).remove();
             localStorage.setItem('dataList' , JSON.stringify([]));
+          }
+          else{
+            location.reload();
+          }
         }
     }
    
@@ -172,7 +177,6 @@ class Insert{
             this.storeData = rem;
             localStorage.setItem('dataList' , JSON.stringify(this.storeData))
         }
-       
       }
 
     itemColor = (event) => {
@@ -200,30 +204,11 @@ class Insert{
             document.getElementById(newId).style.cursor = 'pointer';
         }
     }
-   reset = (event) => {
-        let eventId = 0;
-        let svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        let path =  document.createElementNS('http://www.w3.org/2000/svg','path');
-        svg.classList.add('bi');
-        svg.classList.add('bi-three-dots-vertical');
-        svg.classList.add('img');
-        eventId = event;
-        svg.id = eventId;
-        svg.setAttribute('fill', 'currentColor');
-        svg.setAttribute('viewBox', '0 0 16 16');
-        svg.setAttribute('width', '16');
-        svg.setAttribute('height','16');
-        path.setAttribute('d','M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z')
-        svg.appendChild(path);
-        document.getElementById(event).parentElement.replaceChild(svg,document.getElementById(event));
-        document.getElementById('insertBtn').addEventListener('click',() =>{
-           this.insert(newId)
-        });
-    }
+
 }
 const insertNew = new Insert() 
 insertNew.display()
-window.addEventListener('click', insertNew.remove);
+document.addEventListener('click', insertNew.remove);
 window.addEventListener('click', insertNew.itemColor);
 document.addEventListener('keyup',(event) =>{
     if(event.code === 'Enter'){
