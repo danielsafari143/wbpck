@@ -61,7 +61,7 @@ After you're finished please remove all the comments and instructions!
 
 > I have built a portfolio using HTML, CSS and JavaScript .
 
-**[Todo list]** 
+**[your_project__name]** is todo list
 
 ## 🛠 Built With <a name="built-with"></a>
 
