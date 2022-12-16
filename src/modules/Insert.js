@@ -155,12 +155,26 @@ class Insert {
 
     clear = () => {
       const localData = JSON.parse(localStorage.getItem('dataList'));
-      for (let i = 1; i < localData.length; i += 1) {
+      let local = [];
+      for (let i = 0; i < localData.length; i += 1) {
         if (i !== null) {
-          const currentId = document.getElementById(i);
-          const secondE = document.getElementById(currentId.parentElement.id);
-          document.getElementById(secondE.parentElement.id).remove();
-          localStorage.setItem('dataList', JSON.stringify([{}]));
+          if (localData[i].completed === true) {
+            const currentId = document.getElementById(i);
+            const secondE = document.getElementById(currentId.parentElement.id);
+            const ids = document.getElementById(currentId.parentElement.id).childNodes[0].id;
+            const SecId = document.getElementById(ids).textContent;
+            const rem = localData.filter((letter) => letter.description !== SecId);
+            this.storeData = rem;
+            document.getElementById(secondE.parentElement.id).remove();
+            local = rem;
+          }
+        }
+      }
+      const rem = local.filter((letter) => letter.completed !== true);
+      for (let i = 0; i < rem.length; i += 1) {
+        rem[i].index = i;
+        if (rem[i] !== null) {
+          localStorage.setItem('dataList', JSON.stringify(rem));
         }
       }
     }
