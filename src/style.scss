@@ -1,0 +1,152 @@
+$bcg : #f1f2f5;
+$bcg2 :  #fff;
+$borders :#ddd;
+$clrTxt : #545862;
+
+body {
+  background-color: $bcg;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-container {
+  width: 35vw;
+  background-color: $bcg2;
+  box-shadow: 0 4px 8px 0 #ddd, 0 6px 20px 0 #ddd;
+  border-radius: 2px;
+  margin-top: 40px;
+  box-sizing: border-box;
+
+  .sub-container {
+    padding-left: 0;
+    background-color: $bcg2;
+    height: auto;
+
+    .inp-arrow {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      border-bottom: 1px solid $borders;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem;
+      box-sizing: border-box;
+
+      .textin {
+        width: 90%;
+        height: 30px;
+        border: none;
+        outline: none;
+        color: $clrTxt;
+        font-style: italic;
+        font-size: 16px;
+        font-family: 'Open Sans', 'Lucida Grande', tahoma, verdana, arial, sans-serif;
+      }
+
+      .img {
+        padding-right: 1rem;
+      }
+
+      ::placeholder {
+        color: $borders;
+      }
+    }
+
+    .inp-arrows {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      border-bottom: 1px solid $borders;
+      align-items: center;
+      justify-content: space-between;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      box-sizing: border-box;
+
+      .textin {
+        width: 90%;
+        height: 30px;
+        border: none;
+        outline: none;
+        color: $borders;
+        font-style: italic;
+        font-size: 16px;
+        font-family: 'Open Sans', 'Lucida Grande', tahoma, verdana, arial, sans-serif;
+      }
+
+      .img {
+        padding-right: 1rem;
+      }
+    }
+
+    .list-item {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      border-bottom: 1px solid $borders;
+      align-items: center;
+      padding: 5px;
+      box-sizing: border-box;
+
+      .paragraph {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $clrTxt;
+        width: 100%;
+        font-size: 15px;
+        font-weight: 400;
+        padding: 1rem;
+        line-height: 20px;
+        margin: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        font-family: 'Open Sans', 'Lucida Grande', tahoma, verdana, arial, sans-serif;
+
+        .paragraph2 {
+          outline: none;
+          margin: 0;
+          padding: 0;
+          width: 100%;
+        }
+
+        .img {
+          color: $clrTxt;
+        }
+
+        .img:hover {
+          cursor: all-scroll;
+        }
+      }
+
+      input:hover {
+        cursor: pointer;
+      }
+    }
+
+    .list-item:hover {
+      background-color: #f09440;
+    }
+  }
+
+  .cleared {
+    padding: 15px;
+    width: 100%;
+    background-color: $bcg;
+    text-align: center;
+    box-sizing: border-box;
+    border: none;
+  }
+
+  .cleared a {
+    color: $clrTxt;
+  }
+}
+
+@media screen and (max-width: 853px) {
+  .list-container {
+    width: 80vw;
+  }
+}
